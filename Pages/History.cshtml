@@ -4,5 +4,7 @@
 }
 
 <p>Otrzymano:</p>
-
-<p>@Html.DisplayNameFor(model => Model.Liczba):@Model.Liczba</p>
+@if (Model.Addr != null)
+{
+    <p>@Model.Result</p>
+}

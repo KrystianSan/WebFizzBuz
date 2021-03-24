@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using WebFizzBuzz.Form;
 
 namespace WebFizzBuzz.Pages
 {
@@ -15,10 +16,12 @@ namespace WebFizzBuzz.Pages
     {
         private readonly ILogger<IndexModel> _logger;
 
+        [BindProperty]
+        public Address Address { get; set; }
+
         [BindProperty(SupportsGet = true)]
         public String Name { get; set; }
-        [Required]
-        public int Number { get; set; }
+        
         public IndexModel(ILogger<IndexModel> logger)
         {
             _logger = logger;
@@ -34,7 +37,7 @@ namespace WebFizzBuzz.Pages
         {
             if (ModelState.IsValid)
             {
-                HttpContext.Session.SetInt32("Number", Number);
+                HttpContext.Session.SetString("Number", JsonConvert.SerializeObject(Address));
                 return RedirectToPage("./History");
             }
             return Page();

@@ -6,18 +6,28 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Newtonsoft.Json;
+using WebFizzBuzz.Form;
 
 namespace WebFizzBuzz.Pages
 {
     public class Index1Model : PageModel
     {
-
-        public int Liczba { get; set; }
+        public Address Addr { get; set; }
+        public string Result = "";
         public void OnGet()
         {
-            int liczba = (int)HttpContext.Session.GetInt32("Number"); //?
+            var liczba = HttpContext.Session.GetString("Number");
+            if (liczba != null) Addr = JsonConvert.DeserializeObject<Address>(liczba);
 
-            Liczba = liczba;
+            if (Addr.Number % 3 == 0)
+            {
+                this.Result += "Fizz";
+            }
+            if (Addr.Number % 5 == 0)
+            {
+                this.Result += "Buzz";
+            }
+            else Result = "Liczba " + Addr.Number + "nie spe³nia kryteriów Fizz/Buzz";
         }
     }
 }
