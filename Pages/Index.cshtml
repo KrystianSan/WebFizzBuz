@@ -1,0 +1,16 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome @Model.Name</h1>
+    <h2 class="display-4">Wprowadź liczbę z przedziału 1-1000</h2>
+
+    <form method="post">
+        <label for="Numer">Liczba</label>
+        <input name="Number" /><br />
+        <button type="submit">Wyślij</button>
+    </form>
+</div>
