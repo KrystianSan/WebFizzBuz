@@ -21,14 +21,14 @@ namespace WebFizzBuzz.Pages
 
         [BindProperty(SupportsGet = true)]
         public String Name { get; set; }
-        
+        public string Result;
         public IndexModel(ILogger<IndexModel> logger)
         {
             _logger = logger;
         }
 
         public void OnGet()
-        {
+        { 
             if (string.IsNullOrWhiteSpace(Name))
                 Name = "User";
         }
@@ -37,7 +37,13 @@ namespace WebFizzBuzz.Pages
         {
             if (ModelState.IsValid)
             {
+                Address.Date = DateTime.Now;
                 HttpContext.Session.SetString("Number", JsonConvert.SerializeObject(Address));
+
+                var liczba = HttpContext.Session.GetString("Number");
+                if (liczba != null) Address = JsonConvert.DeserializeObject<Address>(liczba);
+                Address.DoResult();
+
                 return RedirectToPage("./History");
             }
             return Page();
