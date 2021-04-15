@@ -1,15 +1,9 @@
 ﻿@page
 @model WebFizzBuzz.Pages.Index1Model
 @{
-    ViewData["Title"] = "Zapisane w sesji";
 }
-<h1>@ViewData["Title"]</h1>
 
-
-<p>Otrzymano:</p>
-
-@if (Model.Addr != null)
+@foreach (var item in Model.Numbers)
 {
-    <p>@Model.Addr.Result</p>
-    <p>@Model.Addr.Date</p>
+    <p>@Html.DisplayFor(modelItem => item.Result)@Html.DisplayFor(modelItem => item.Date)</p>
 }

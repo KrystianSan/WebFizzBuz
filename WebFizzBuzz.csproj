@@ -6,6 +6,10 @@
 
   <ItemGroup>
     <Compile Remove="Form\Number.cs" />
+    <Compile Remove="Migrations\20210415141310_InitSchema.cs" />
+    <Compile Remove="Migrations\20210415141310_InitSchema.Designer.cs" />
+    <Compile Remove="Migrations\20210415161654_InitSchema.cs" />
+    <Compile Remove="Migrations\20210415161654_InitSchema.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -20,6 +24,10 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
 </Project>

@@ -1,0 +1,10 @@
+﻿@page
+@model WebFizzBuzz.Pages.Index1Model
+
+
+<p>Otrzymano:</p>
+@if (Model.Addr != null)
+{
+    <p>@Model.Addr.Result</p>
+    <p>@Model.Addr.Date</p>
+}
