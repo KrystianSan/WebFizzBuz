@@ -34,7 +34,6 @@ namespace WebFizzBuzz.Pages
                 Name = "User";
         }
 
-        //public IList<Address> Numbers { get; set; }
 
         public IActionResult OnPost()
         {

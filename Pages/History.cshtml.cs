@@ -24,7 +24,7 @@ namespace WebFizzBuzz.Pages
 
         public void OnGet()
         {
-            Numbers = _context.Address.ToList();
+            Numbers = _context.Address.OrderByDescending(p => p.Id).Take(10).ToList();
         }
     }
 }

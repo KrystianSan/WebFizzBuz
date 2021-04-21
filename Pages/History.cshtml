@@ -1,9 +1,30 @@
 ﻿@page
-@model WebFizzBuzz.Pages.Index1Model
+@model WebFizzBuzz.Pages.Index2Model
 @{
 }
 
-@foreach (var item in Model.Numbers)
-{
-    <p>@Html.DisplayFor(modelItem => item.Result)@Html.DisplayFor(modelItem => item.Date)</p>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <tbody>
+@foreach (var item in Model.Numbers) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Result)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
 }
+    </tbody>
+</table>
