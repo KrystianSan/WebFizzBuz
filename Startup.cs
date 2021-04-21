@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebFizzBuzz.Data;
+using WebFizzBuzz.Services;
 
 namespace WebFizzBuzz
 {
@@ -25,12 +26,14 @@ namespace WebFizzBuzz
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            
             services.AddDbContext<Numbers>(options => {
                 options.UseSqlServer(Configuration.GetConnectionString("WebFizzBuzz"));
             });
             services.AddRazorPages();
             services.AddMemoryCache();
             services.AddSession();
+            services.AddTransient<JsonFileProductService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
