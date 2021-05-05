@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
@@ -10,6 +11,7 @@ using WebFizzBuzz.Form;
 
 namespace WebFizzBuzz.Pages
 {
+    [Authorize]
     public class Index2Model : PageModel
     {
         private readonly ILogger<Index2Model> _logger;
@@ -24,7 +26,7 @@ namespace WebFizzBuzz.Pages
 
         public void OnGet()
         {
-            Numbers = _context.Address.OrderByDescending(p => p.Id).Take(10).ToList();
+            Numbers = _context.Address.OrderByDescending(p => p.Id).Take(20).ToList();
         }
     }
 }
