@@ -16,7 +16,7 @@ namespace WebFizzBuzz.Pages
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
-        private readonly Numbers _context; //readonly?
+        private readonly Numbers _context;
         [BindProperty]
         public Address Address { get; set; }
 
